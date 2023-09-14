@@ -1,9 +1,8 @@
-# rideshareapi
+# rideshareapi - Project Mitanand
 Rideshare API - Connect public transport and ridesharing (GTFS)
+> Based on <a href="https://gtfs.org/de/">GTFS</a>
 
-Based on <a href="https://gtfs.org/de/">GTFS</a>
-
-# Aktueller Stand
+# :minibus:  Aktueller Stand
 
 ## [agency.txt](#agency)
   * [agency_id](#agency_id)
@@ -45,7 +44,9 @@ Based on <a href="https://gtfs.org/de/">GTFS</a>
   * [start_required](start_required)
   * [end_date](end_date)
 
-# Fehlend (Sichtbarkeit required, optional)
+# :rotating_light: Fehlend 
+ // GTFS-RT einfügen
+ // Sichtbarkeit required, optional
 
 ## [driver.txt](#driver)
   * [profile_picture](#profile_picture)
@@ -61,6 +62,8 @@ Based on <a href="https://gtfs.org/de/">GTFS</a>
   * [creation_date](#creation_date)
   * [smoking](#smoking)
   * [payment_method](#payment_method)
+
+
 
   
 
