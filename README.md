@@ -10,6 +10,7 @@ Based on <a href="https://gtfs.org/de/">GTFS</a> (🟥 = required fields, 🟦 =
 - [x] trip_url nicht in ursprünglicher Datei --> Deeplink zur Anwendung nicht Standard <br>
 - [ ] Limit Beschreiben max. 256 Character etc.
 - [ ] Links im Dokument setzen
+- [ ] Ausgabe bei keiner Angabe im optionalen Feld - keine Angabe?
 
 ## :minibus:  Aktueller Stand
 
