@@ -75,11 +75,10 @@ Connecting public transport and ridesharing
 # :rotating_light: Fehlend 
  // GTFS-RT einfügen <br>
  // Preise? <br>
- // Creation Date?
- // Beispieldatensatz neutralisieren Beispiel GmbH etc.
- // Language bei agency hinzufügen?
- // trip_url nicht in ursprünglicher Datei?
-
+ // Creation Date? <br>
+ // Language bei agency hinzufügen? <br>
+ // trip_url nicht in ursprünglicher Datei? <br>
+ // Limit Beschreiben max. 256 Character etc.
 ## [driver.txt](#driver)
 
 | Feld | Beschreibung | Beispiel | Notwendigkeit |
