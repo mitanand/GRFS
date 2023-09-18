@@ -12,9 +12,9 @@ Connecting public transport and ridesharing
 
 | Feld | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: |
-| [agency_id](#agency_id) | Operator-ID | GOFLUX | 🟥 |
-| [agency_name](#agency_name) | Operator-Name | goFlux | 🟥 |
-| [agency_url](#agency_url) | Operator-URL | [https://www.goflux.de](https://www.goflux.de) | 🟦 |
+| [agency_id](#agency_id) | Operator-ID | EXAMPLE AG | 🟥 |
+| [agency_name](#agency_name) | Operator-Name | example | 🟥 |
+| [agency_url](#agency_url) | Operator-URL | [https://www.example.com](https://www.example.com) | 🟦 |
 | [agency_timezone](#agency_timezone) | Zeitzone | Europa/Berlin | 🟥 |
 
 ## [routes.txt](#routes)
@@ -22,7 +22,7 @@ Connecting public transport and ridesharing
 | Feld | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: |
 | [route_id](#route_id) |  |  | 🟥 |
-| [agency_id](#agency_id) | Operator-ID | GOFLUX | 🟥 |
+| [agency_id](#agency_id) | Operator-ID | EXAMPLE AG | 🟥 |
 | [route_short_name](#route_short_name) |  | Berlin -> Munich  | 🟥 |
 | [route_long_name](#route_long_name) |  | Alexanderplatz 7, 10178 Berlin -> Marienplatz 8, 80331 Munich | 🟥 |
 | [route_type](#route_type) |  | 1551 | 🟥 |
