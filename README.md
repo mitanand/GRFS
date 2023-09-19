@@ -8,6 +8,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 - [ ] Ausgabe bei keiner Angabe im optionalen Feld - Default = none?
 - [ ] Definition des Inputs von Anbietern / API-Key JSON/XML in welcher Form?
 - [ ] Short Name rausnehmen ? Macht Sinn bei Buslinien X200 oder 135 etc.
+- [ ] API-Key, Tokens, etc. Sicherheit?
 
 <br>
 
@@ -40,7 +41,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 <details>
 <summary><h3>routes.txt</h3> </summary>
-
+  
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
 | [route_id](#route_id) | string | Kennzeichnet eine Route {origin_uuid}_{destination_uuid} | 05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55 | 🟥 |
