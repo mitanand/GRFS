@@ -16,7 +16,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 <br>
 <br>
 
-![Alt Test](https://github.com/mitanand/rideshareapi/blob/7034f0a0955662ea551b50d26de72e570710f7dc/rideshareapi_2.png))
+![Alt Test](https://github.com/mitanand/rideshareapi/blob/4f4db82f9dd5d677ef3dd926dbc86237c6d5e45a/rideshareapi_how_to_participate.png)
 
 <br>
 
