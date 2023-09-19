@@ -9,6 +9,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 - [ ] Definition des Inputs von Anbietern / API-Key JSON/XML in welcher Form?
 - [ ] Short Name rausnehmen ? Macht Sinn bei Buslinien X200 oder 135 etc.
 - [ ] API-Key, Tokens, etc. Sicherheit?
+- [ ] Integration via A) JSON/XML API-Key  B) rideshareapi/GTFS C) MFDZ Amarillo Github
 
 <br>
 
