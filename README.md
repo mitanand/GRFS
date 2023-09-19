@@ -13,16 +13,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 <br>
 
-## :raised_hand: How to participate as a ridesharing provider?
-
-<br>
-<br>
-
-![Alt Test](https://github.com/mitanand/rideshareapi/blob/4f4db82f9dd5d677ef3dd926dbc86237c6d5e45a/rideshareapi_how_to_participate.png)
-
-<br>
-
-## :minibus: rideshareapi (🟥 = required fields, 🟦 = optional fields)
+## :minibus: outbound rideshareapi
 
 <details>
 <summary><h3>agency.txt</h3> </summary>
@@ -148,13 +139,29 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 <br>
 
-## :hammer: rideshareapi example
+## :hammer: inbound rideshareapi
+
+### How to participate as a ridesharing provider?
+
+<br>
+<br>
+
+![Alt Test](https://github.com/mitanand/rideshareapi/blob/4f4db82f9dd5d677ef3dd926dbc86237c6d5e45a/rideshareapi_how_to_participate.png)
+
+<br>
+
+### Technical specification
+
 <details>
-<summary><h3>JSON to rideshareapi (Picutre version A)</h3> </summary>
+<summary><h3>JSON/XML via API-KEY (Picutre version A)</h3> </summary>
 </details>
 
 <details>
-<summary><h3>XML to rideshareapi (Picutre version A)</h3> </summary>
+<summary><h3>rideshareapi via ridesharing provider (Picutre version B)</h3> </summary>
+</details>
+
+<details>
+<summary><h3>MFDZ Amarillo (Picutre version A)</h3> </summary>
 </details>
 
 
