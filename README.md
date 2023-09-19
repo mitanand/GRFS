@@ -144,5 +144,18 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 | [currency_type](#currency_type) | string | Währung, in der der Fahrpreis bezahlt wird. Währungscode https://de.wikipedia.org/wiki/ISO_4217#Active_codes.| EUR | 🟥 |
 </details>
 
+<br>
+
+## :hammer: rideshareapi example
+<details>
+<summary><h3>JSON to rideshareapi (Picutre version A)</h3> </summary>
+</details>
+
+<details>
+<summary><h3>XML to rideshareapi (Picutre version A)</h3> </summary>
+</details>
+
+
+
 
   
