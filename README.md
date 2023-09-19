@@ -2,15 +2,16 @@
 Connecting public transport and ridesharing
 Based on <a href="https://gtfs.org/de/">GTFS</a> (🟥 = required fields, 🟦 = optional fields)
 
+## How to participate as a ridesharing provider?
+
+MFA via API_KEY -> Server --> Public Transport via Rideshareapi_GTFS
+MFA via rideshareapi --> Public Transport via Rideshareapi_GTFS
+
 ## :rotating_light: ToDo 
-- [ ] GTFS-RT <br>
-- [x] Preise -> fare_attributes.txt <br>
-- [ ] Creation Date? <br>
-- [x] Language bei agency hinzufügen? --> Vorerst rausgelassen <br>
-- [x] trip_url nicht in ursprünglicher Datei --> Deeplink zur Anwendung nicht Standard <br>
+- [ ] GTFS-RT zur Aktualisierung der Daten <br>
 - [ ] Limit Beschreiben max. 256 Character etc.
 - [ ] Links im Dokument setzen
-- [ ] Ausgabe bei keiner Angabe im optionalen Feld - keine Angabe?
+- [ ] Ausgabe bei keiner Angabe im optionalen Feld - Default = none?
 - [ ] Definition des Inputs von Anbietern / API-Key JSON/XML in welcher Form?
 - [ ] Short Name rausnehmen ? Macht Sinn bei Buslinien X200 oder 135 etc.
 
