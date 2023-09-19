@@ -150,8 +150,6 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 <br>
 
-### Technical specification
-
 <details>
 <summary><h3>JSON/XML via API-KEY (Picutre version A)</h3> </summary>
 </details>
