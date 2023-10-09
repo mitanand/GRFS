@@ -105,6 +105,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
+| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
 | [profile_picture](#profile_picture) | |  |  | 🟦 |
 | [driver_id](#driver_id) | string | Ein String aus UTF-8-Zeichen | 21321asd52a1sd58 | 🟦 |
 | [rating](#rating) | int | {number} 1 low to 5 best | 5 | 🟦 |
@@ -116,6 +117,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
+| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
 | [number_free_seats](#number_free_seats) | int | {number} 0 to 40 best | 2 | 🟥 |
 | [same_gender](#same_gender) | boolean | {Boolean} | true | 🟦 |
 | [luggage_size](#luggage_size) | string | Ein String aus UTF-8-Zeichen klein, mittel, groß | klein | 🟦 |
@@ -132,6 +134,7 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
+| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
 | [fare_id](#fare_id) | string | Kennzeichnet eine Preisklasse | 54asdasd8asd2asd | 🟥 |
 | [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0 | 2.30 | 🟥 |
 | [currency_type](#currency_type) | string | Währung, in der der Fahrpreis bezahlt wird. Währungscode https://de.wikipedia.org/wiki/ISO_4217#Active_codes.| EUR | 🟥 |
