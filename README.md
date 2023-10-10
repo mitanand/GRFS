@@ -10,6 +10,15 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 - [ ] Short Name rausnehmen ? Macht Sinn bei Buslinien X200 oder 135 etc.
 - [ ] API-Key, Tokens, etc. Sicherheit?
 - [ ] Integration via A) JSON/XML API-Key  B) rideshareapi/GTFS C) MFDZ Amarillo Github
+- [ ] Zeichen an GTFS anlehnen
+- [ ] Trip_url durch route_url ersetzten
+- [ ] ID Semantik nicht zu hart angeben
+- [ ] Stop_times - Haltestellen sehr nahe am Start und am Ziel -> nur als Einstieg bzw. Ausstieg definieren - Vermeidung von sehr kurzen Fahrten
+- [ ] Teilstrecken Buchung bzw. Matching --> trip_id Bezug bei fare_attributes fehlerhaft wegen Teilstrecke. Preis pro Kilometer? Teilstreckung Berechnung funktioniert nur beim dem der das Matching macht --> Cent pro Kilometer / Schwierigkeit bei Vollautomatisierten Systemen bspw. BlaBlaCar
+- [ ] 🟥 Pflichtfeld / 🟦 Optional
+- [ ] Vollautomatisierte Systeme direkt über GTFS da Stops vorher definiert sind.
+- [ ] profile_picture ==> url
+- [ ] rating muss ein float sein
 
 <br>
 
@@ -36,11 +45,11 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
   
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [route_id](#route_id) | string | Kennzeichnet eine Route {origin_uuid}_{destination_uuid} | 05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55 | 🟥 |
-| [agency_id](#agency_id) | string | Operator ID | EXAMPLE AG | 🟥 |
-| [route_short_name](#route_short_name) | string | Kurzname einer Route {departure_city} → {arrival_city} | Berlin -> Munich  | 🟥 |
-| [route_long_name](#route_long_name) | string | Vollständiger Name einer Route {departure_address} → {arrival_address} | Alexanderplatz 7, 10178 Berlin -> Marienplatz 8, 80331 Munich | 🟥 |
-| [route_type](#route_type) | string | routeType OpenTripPlanner | 1551 | 🟥 |
+| [route_id](#route_id) | string | Ein String aus UTF-8-Zeichen / Beliebige Gestaltung / Präfix: agency_name_{Individuell} Kennzeichnet eine Route {origin_uuid}_{destination_uuid} | 05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55 | 🟥 |
+| [agency_id](#agency_id) | string | Ein String aus UTF-8-Zeichen - Operator ID | EXAMPLE AG | 🟥 |
+| [route_short_name](#route_short_name) | string | Ein String aus UTF-8-Zeichen - Kurzname einer Route {departure_city} -> {arrival_city} | Berlin -> Munich  | 🟥 |
+| [route_long_name](#route_long_name) | string | Ein String aus UTF-8-Zeichen -  Vollständiger Name einer Route {departure_address} → {arrival_address} | Alexanderplatz 7, 10178 Berlin -> Marienplatz 8, 80331 Munich | 🟥 |
+| [route_type](#route_type) | string | Ein String aus UTF-8-Zeichen - routeType OpenTripPlanner | 1551 | 🟥 |
 
 > #### Beispiel: routes.txt
 > route_id,agency_id,route_short_name,route_long_name, route_type <br>
@@ -134,10 +143,10 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
-| [fare_id](#fare_id) | string | Kennzeichnet eine Preisklasse | 54asdasd8asd2asd | 🟥 |
-| [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0 | 2.30 | 🟥 |
-| [currency_type](#currency_type) | string | Währung, in der der Fahrpreis bezahlt wird. Währungscode https://de.wikipedia.org/wiki/ISO_4217#Active_codes.| EUR | 🟥 |
+| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
+| [fare_id](#fare_id) | string | Kennzeichnet eine Preisklasse | 54asdasd8asd2asd | 🟦 |
+| [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0. In der Einheit € pro Kilometer | 2.30 | 🟦 |
+| [currency_type](#currency_type) | string | Währung, in der der Fahrpreis bezahlt wird. Währungscode https://de.wikipedia.org/wiki/ISO_4217#Active_codes.| EUR | 🟦 |
 </details>
 
 <br>
