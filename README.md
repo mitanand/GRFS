@@ -1,5 +1,5 @@
-# rideshareapi - Mitanand
-Connecting public transport and ridesharing based on <a href="https://gtfs.org/de/">GTFS</a>
+# GRFS General Ridesharing Feed Specification - Mitanand
+Connecting public transport and ridesharing based on [GTFS](https://gtfs.org).
 
 ## :rotating_light: ToDo 
 - [ ] GTFS-RT zur Aktualisierung der Daten <br>
@@ -27,33 +27,50 @@ Connecting public transport and ridesharing based on <a href="https://gtfs.org/d
 <details>
 <summary><h3>agency.txt</h3> </summary>
 
-| Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
-| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [agency_id](#agency_id) | string | Operator ID | EXAMPLE AG | 🟥 |
-| [agency_name](#agency_name) | string | Operator Name | example | 🟥 |
-| [agency_timezone](#agency_timezone) | string | Zeitzone | Europa/Berlin | 🟥 |
-| [agency_url](#agency_url) | string | Operator URL | [https://www.example.com](https://www.example.com) | 🟦 |
-| [agency_lang](#agency_lang) | string | Operator Language | de | 🟦 |
+Same as [GTFS agency.txt](https://gtfs.org/schedule/reference/#agencytxt).
 
-> #### Beispiel: agency.txt
+File: **Required**
+
+Primary key (`agency_id`)
+
+|  Field Name | Type | Presence | Description |
+|  ------ | ------ | ------ | ------ |
+|  `agency_id` | Unique ID | **Conditionally Required** | Identifies a transit brand which is often synonymous with a transit agency. Note that in some cases, such as when a single agency operates multiple separate services, agencies and brands are distinct. This document uses the term "agency" in place of "brand". A dataset may contain data from multiple agencies. <br><br>Conditionally Required:<br>- **Required** when the dataset contains data for multiple transit agencies. <br>- Recommended otherwise. |
+|  `agency_name` | Text | **Required** | Full name of the transit agency. |
+|  `agency_url` | URL | **Required** | URL of the transit agency. |
+|  `agency_timezone` | Timezone | **Required** | Timezone where the transit agency is located. If multiple agencies are specified in the dataset, each must have the same `agency_timezone`. |
+|  `agency_lang` | Language code | Optional | Primary language used by this transit agency. Should be provided to help GTFS consumers choose capitalization rules and other language-specific settings for the dataset. |
+|  `agency_phone` | Phone number | Optional | A voice telephone number for the specified agency. This field is a string value that presents the telephone number as typical for the agency's service area. It may contain punctuation marks to group the digits of the number. Dialable text (for example, TriMet's "503-238-RIDE") is permitted, but the field must not contain any other descriptive text. |
+|  `agency_fare_url` | URL | Optional | URL of a web page that allows a rider to purchase tickets or other fare instruments for that agency online. |
+|  `agency_email` | Email | Optional | Email address actively monitored by the agency’s customer service department. This email address should be a direct contact point where transit riders can reach a customer service representative at the agency. |
+
+> #### Example: agency.txt
 > agency_id,agency_name,agency_url,agency_timezone <br>
-> EXAMPLE AG, example, http://www.example.com, Europa/Berlin
+> "EXAMPLE AG",example,"https://www.example.com",Europa/Berlin
 </details>
 
 <details>
 <summary><h3>routes.txt</h3> </summary>
   
-| Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
-| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [route_id](#route_id) | string | Ein String aus UTF-8-Zeichen / Beliebige Gestaltung / Präfix: agency_name_{Individuell} Kennzeichnet eine Route {origin_uuid}_{destination_uuid} | 05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55 | 🟥 |
-| [agency_id](#agency_id) | string | Ein String aus UTF-8-Zeichen - Operator ID | EXAMPLE AG | 🟥 |
-| [route_short_name](#route_short_name) | string | Ein String aus UTF-8-Zeichen - Kurzname einer Route {departure_city} -> {arrival_city} | Berlin -> Munich  | 🟥 |
-| [route_long_name](#route_long_name) | string | Ein String aus UTF-8-Zeichen -  Vollständiger Name einer Route {departure_address} → {arrival_address} | Alexanderplatz 7, 10178 Berlin -> Marienplatz 8, 80331 Munich | 🟥 |
-| [route_type](#route_type) | string | Ein String aus UTF-8-Zeichen - routeType OpenTripPlanner | 1551 | 🟥 |
+Similar to [GTFS routes.txt](https://gtfs.org/schedule/reference/#routestxt), more strict.
 
-> #### Beispiel: routes.txt
-> route_id,agency_id,route_short_name,route_long_name, route_type <br>
-> 05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,EXAMPLE AG,Berlin -> Munich ,Alexanderplatz 7,10178 Berlin -> Marienplatz 8, 80331 Munich,1551
+File: **Required**
+
+Primary key (`route_id`)
+
+|  Field Name | Type | Presence | Description |
+|  ------ | ------ | ------ | ------ |
+|  `route_id` | Unique ID | **Required** | Identifies a route. Prefixed with agency_id and ":" if multiple agencies are defined in agency.txt, e.g. "goflux:1234" |
+|  `agency_id` | Foreign ID referencing `agency.agency_id` | **Conditionally Required** | Agency for the specified route.<br><br>Conditionally Required:<br>- **Required** if multiple agencies are defined in [agency.txt](#agency). <br>- Recommended otherwise. |
+|  `route_short_name` | Text | **Required** | Short name of a route departure_{city} -> {arrival_city}, e.g. Berlin - Munich. |
+|  `route_long_name` | Text | **Required** | Full name of a route. This name is generally more descriptive than the `route_short_name` and often includes the route's destination or stop, {departure_address} - {arrival_address}, e.g. Alexanderplatz 7, 10178 Berlin - Marienplatz 8, 80331 Munich |
+|  `route_type` | Enum | **Required** | 1551 | 1551 is the type supported by OpenTripPlanner |
+|  `route_url` | URL | **Required** | URL of a web page about the particular route. Should be different from the `agency.agency_url` value, e.g. https://fahrgemeinschaft.de/?trip=322337 |
+
+> #### Example: routes.txt
+> route_id,agency_id,route_short_name,route_long_name, route_type,route_url<br>
+> goflux:05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,goflux,"Berlin - Munich","Alexanderplatz 7,10178 Berlin - Marienplatz 8, 80331 Munich",1551,https://goflux.de/?trip=322337
+
 </details>
 
 <details>
