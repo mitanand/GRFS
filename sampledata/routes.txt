@@ -4,4 +4,3 @@ fg,fg:2,"Ravensburg - Biberach (R)","Vetter Pharma, Ravensburg nach Biberach (Ri
 fg,fg:3,"Kempten - Sonthofen","Im Oberwang, Kempten (Allgäu) nach Grüntenstraße, Sonthofen",1551,https://fahrgemeinschaft.de/?trip=560968
 fg,fg:4,"Argenbühl - Friedrichshafen","Christazhofen, Argenbühl nach MTU Friedrichshafen - Werk 1, Friedrichshafen",1551,https://fahrgemeinschaft.de/?trip=662630
 fg,fg:5,"Argenbühl - Lindenberg","Christazhofen, Argenbühl nach Lindenberg im Allgäu",1551,https://fahrgemeinschaft.de/?trip=255574
-

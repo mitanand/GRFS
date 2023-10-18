@@ -1,6 +1,6 @@
-route_id,trip_id,service_id,shape_id,trip_headsign,bikes_allowed
-fg:1,fg:1,fg:1,fg:1,Gemeindeverwaltungsverband Schwendi,2
-fg:2,fg:2,fg:2,fg:2,Biberach an der Riß,2
-fg:3,fg:3,fg:3,fg:3,Sonthofen,2
-fg:4,fg:4,fg:4,fg:4,Friedrichshafen,2
-fg:5,fg:5,fg:5,fg:5,Lindenberg im Allgäu,2
+route_id,trip_id,service_id,shape_id
+fg:1,fg:1,fg:1,fg:1
+fg:2,fg:2,fg:2,fg:2
+fg:3,fg:3,fg:3,fg:3
+fg:4,fg:4,fg:4,fg:4
+fg:5,fg:5,fg:5,fg:5
