@@ -129,6 +129,15 @@ Primary key (`service_id`)
 
 **All** attributes as in [GTFS calendar.txt](https://gtfs.org/schedule/reference/#calendartxt).
 
+### shapes.txt
+
+| Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
+| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
+| [shape_id](#shape_id) | ID | Foreign ID referencing `trips.trip_id` | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
+| [shape_pt_lon](#shape_pt_lon) | Latitude | degrees North, in the WGS-84 coordinate system | 9.595989 | 🟥 |
+| [shape_pt_lat](#shape_pt_lat) | Longitude | degrees East, in the WGS-84 coordinate system | 47.753088 | 🟥 |
+| [shape_pt_sequence](#shape_pt_sequence) | Non-negative integer | Sequence in which the shape points connect to form the shape. Values must increase along the trip but do not need to be consecutive. | 1 | 🟥 |
+
 ### driver.txt
 
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
@@ -143,8 +152,8 @@ Primary key (`service_id`)
 
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
-| [number_free_seats](#number_free_seats) | int | {number} 0 to 40 best | 2 | 🟥 |
+| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
+| [number_free_seats](#number_free_seats) | int | {number} 0 to 40 best | 2 | 🟦 |
 | [same_gender](#same_gender) | boolean | {Boolean} | true | 🟦 |
 | [luggage_size](#luggage_size) | string | Ein String aus UTF-8-Zeichen klein, mittel, groß | klein | 🟦 |
 | [animal_car](#animal_car) | boolean | {Boolean} | false | 🟦 |
@@ -161,7 +170,7 @@ Primary key (`service_id`)
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
 | [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
 | [fare_id](#fare_id) | string | Kennzeichnet eine Preisklasse | 54asdasd8asd2asd | 🟦 |
-| [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0. In der Einheit € pro Kilometer | 2.30 | 🟦 |
+| [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0. Preis für die Gesamtstrecke | 2.30 | 🟦 |
 | [currency_type](#currency_type) | string | Währung, in der der Fahrpreis bezahlt wird. Währungscode https://de.wikipedia.org/wiki/ISO_4217#Active_codes.| EUR | 🟦 |
 
 ## :hammer: inbound rideshareapi
