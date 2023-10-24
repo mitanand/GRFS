@@ -1,6 +1,6 @@
 # GRFS General Ridesharing Feed Specification - Mitanand
 Connecting public transport and ridesharing based on [GTFS](https://gtfs.org).
-
+<!--
 ## :rotating_light: ToDo 
 - [ ] GTFS-RT zur Aktualisierung der Daten <br>
 - [ ] Limit Beschreiben max. 256 Character etc.
@@ -14,14 +14,14 @@ Connecting public transport and ridesharing based on [GTFS](https://gtfs.org).
 - [ ] Trip_url durch route_url ersetzten
 - [ ] ID Semantik nicht zu hart angeben
 - [ ] Stop_times - Haltestellen sehr nahe am Start und am Ziel -> nur als Einstieg bzw. Ausstieg definieren - Vermeidung von sehr kurzen Fahrten
-- [ ] Teilstrecken Buchung bzw. Matching --> trip_id Bezug bei fare_attributes fehlerhaft wegen Teilstrecke. Preis pro Kilometer? Teilstreckung Berechnung funktioniert nur beim dem der das Matching macht --> Cent pro Kilometer / Schwierigkeit bei Vollautomatisierten Systemen bspw. BlaBlaCar
+- [ ] Teilstrecken Buchung bzw. Matching -> trip_id Bezug bei fare_attributes fehlerhaft wegen Teilstrecke. Preis pro Kilometer? Teilstreckung Berechnung funktioniert nur beim dem der das Matching macht -> Cent pro Kilometer / Schwierigkeit bei Vollautomatisierten Systemen bspw. BlaBlaCar
 - [ ] 🟥 Pflichtfeld / 🟦 Optional
 - [ ] Vollautomatisierte Systeme direkt über GTFS da Stops vorher definiert sind.
-- [ ] profile_picture ==> url
+- [ ] profile_picture -> url
 - [ ] rating muss ein float sein
 - [ ] routes.txt und trips.txt Beziehung 1:1
 - [ ] Shapes.txt welches Koordinatensystem wird verwendet - WGS 84?!
-
+-->
 <br>
 
 ## :minibus: Specification
