@@ -89,6 +89,12 @@ Primary key (`trip_id`)
 |  `trip_id` | Unique ID | **Required** | Identifies a trip. |
 |  `shape_id` | Foreign ID referencing `shapes.shape_id` | **Required** | Identifies a geospatial shape describing the vehicle travel path for a trip. |
 
+#### Example: trips.txt
+
+```
+route_id,trip_id,service_id,shape_id 
+goflux:05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,"EXAMPLE AG","https://www.example.com",Europe/Berlin
+```
 
 ### stop_times.txt
 
@@ -106,6 +112,12 @@ Primary key (`trip_id`, `stop_sequence`)
 |  `stop_id` | Foreign ID referencing `stops.stop_id` | **Required** | Identifies the serviced stop. All stops serviced during a trip must have a record in [stop_times.txt](#stop_timestxt). Referenced locations must be stops/platforms, i.e. their `stops.location_type` value must be `0` or empty. A stop may be serviced multiple times in the same trip, and multiple trips and routes may service the same stop. |
 |  `stop_sequence` | Non-negative integer | **Required** | Order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive.<hr>*Example: The first location on the trip could have a `stop_sequence`=`1`, the second location on the trip could have a `stop_sequence`=`23`, the third location could have a `stop_sequence`=`40`, and so on.* |
 
+#### Example: stop_times.txt
+
+```
+trip_id,departure_time,arrival_time,stop_id,stop_sequence
+fg:1,15:45:06,15:45:06,de:08436:8049,2
+```
 
 ### stops.txt
 
@@ -122,6 +134,12 @@ Primary key (`stop_id`)
 |  `stop_lat` | Latitude | **Required** | Latitude of the location. |
 |  `stop_lon` | Longitude | **Required** | Longitude of the location. |
 
+#### Example: stops.txt
+
+```
+stop_id,stop_lat,stop_lon,stop_name
+mfdz:Ang001,53.11901,14.015776,Mitfahrbank Biesenbrow
+```
 
 ### calendar.txt
 
@@ -130,6 +148,13 @@ File: **Required**
 Primary key (`service_id`)
 
 **All** attributes as in [GTFS calendar.txt](https://gtfs.org/schedule/reference/#calendartxt).
+
+#### Example: calendar.txt
+
+```
+service_id,start_date,end_date,monday,tuesday,wednesday,thursday,friday,saturday,sunday
+fg:1,20220223,20220223,0,0,1,0,0,0,0
+```
 
 ### shapes.txt
 
@@ -140,14 +165,28 @@ Primary key (`service_id`)
 | [shape_pt_lat](#shape_pt_lat) | Longitude | degrees East, in the WGS-84 coordinate system | 47.753088 | 🟥 |
 | [shape_pt_sequence](#shape_pt_sequence) | Non-negative integer | Sequence in which the shape points connect to form the shape. Values must increase along the trip but do not need to be consecutive. | 1 | 🟥 |
 
+#### Example: shapes.txt
+
+```
+shape_id,shape_pt_lon,shape_pt_lat,shape_pt_sequence
+1,9.595989,47.753088,1
+```
+
 ### driver.txt
 
 | Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
-| [profile_picture](#profile_picture) | |  |  | 🟦 |
+| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
+| [profile_picture](#profile_picture) | |  | "https://www.example.com" | 🟦 |
 | [driver_id](#driver_id) | string | Ein String aus UTF-8-Zeichen | 21321asd52a1sd58 | 🟦 |
 | [rating](#rating) | int | {number} 1 low to 5 best | 5 | 🟦 |
+
+#### Example: driver.txt
+
+```
+trip_id,profile_picture,driver_id,rating
+e5cacd3-96de-4c40-9f4f-caf17b85619a,"https://www.example.com",47753088,3,2
+```
 
 
 ### additional_ridesharing_info.txt
@@ -157,7 +196,7 @@ Primary key (`service_id`)
 | [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
 | [number_free_seats](#number_free_seats) | int | {number} 0 to 40 best | 2 | 🟦 |
 | [same_gender](#same_gender) | boolean | {Boolean} | true | 🟦 |
-| [luggage_size](#luggage_size) | string | Ein String aus UTF-8-Zeichen klein, mittel, groß | klein | 🟦 |
+| [luggage_size](#luggage_size) | string | Ein String aus UTF-8-Zeichen small, medium, large | small | 🟦 |
 | [animal_car](#animal_car) | boolean | {Boolean} | false | 🟦 |
 | [car_model](#car_model) | string |Ein String aus UTF-8-Zeichen | Golf | 🟦 |
 | [car_brand](#car_brand) | string |Ein String aus UTF-8-Zeichen | VW | 🟦 |
@@ -165,6 +204,12 @@ Primary key (`service_id`)
 | [smoking](#smoking) | boolean |{Boolean} | false | 🟦 |
 | [payment_method](#payment_method) | string | Ein String aus UTF-8-Zeichen | PayPal | 🟦 |
 
+#### Example: additional_ridesharing_info.txt
+
+```
+trip_id,number_free_seats,same_gender,luggage_size,animal_car,car_model,car_brand,creation_date,smoking,payment_method
+e5cacd3-96de-4c40-9f4f-caf17b85619a,2,false,small,false,Golf,VW,20230820 12:10:10,false,PayPal
+```
 
 ### fare_attributes.txt
 
@@ -172,9 +217,17 @@ Primary key (`service_id`)
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
 | [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
 | [fare_id](#fare_id) | string | Kennzeichnet eine Preisklasse | 54asdasd8asd2asd | 🟦 |
-| [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0. Preis für die Gesamtstrecke | 2.30 | 🟦 |
+| [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0. Preis für die Gesamtstrecke | 5.60 | 🟦 |
 | [currency_type](#currency_type) | string | Währung, in der der Fahrpreis bezahlt wird. Währungscode https://de.wikipedia.org/wiki/ISO_4217#Active_codes.| EUR | 🟦 |
 
+#### Example: fare_attributes.txt
+
+```
+trip_id,fare_id,price,currency_type
+e5cacd3-96de-4c40-9f4f-caf17b85619a,54asdasd8asd2asd,5.60,EUR
+```
+
+<!--
 ## :hammer: inbound rideshareapi
 
 ### How to participate as a ridesharing provider?
@@ -197,7 +250,7 @@ Primary key (`service_id`)
 <details>
 <summary><h3>MFDZ Amarillo (Picutre version A)</h3> </summary>
 </details>
-
+-->
 
 
 
