@@ -1,0 +1,1 @@
+trip_id,number_free_seats,same_gender,luggage_size,animal_car,car_model,car_brand,creation_date,smoking,payment_method
