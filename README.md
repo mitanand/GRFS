@@ -19,6 +19,8 @@ Connecting public transport and ridesharing based on [GTFS](https://gtfs.org).
 - [ ] Vollautomatisierte Systeme direkt über GTFS da Stops vorher definiert sind.
 - [ ] profile_picture ==> url
 - [ ] rating muss ein float sein
+- [ ] routes.txt und trips.txt Beziehung 1:1
+- [ ] Shapes.txt welches Koordinatensystem wird verwendet - WGS 84?!
 
 <br>
 
