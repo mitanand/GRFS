@@ -26,7 +26,9 @@ Connecting public transport and ridesharing based on [GTFS](https://gtfs.org).
 
 ## :minibus: Specification
 
-### agency.txt
+<details>
+<summary><h3>agency.txt</h3><br>
+</summary>
 
 File: **Required**
 
@@ -47,9 +49,12 @@ Primary key (`agency_id`)
 agency_id,agency_name,agency_url,agency_timezone 
 example,"EXAMPLE AG","https://www.example.com",Europe/Berlin
 ```
+</details>
 
 
-### routes.txt
+<details>
+<summary><h3>routes.txt</h3><br>
+</summary>
   
 
 File: **Required**
@@ -73,8 +78,12 @@ Primary key (`route_id`)
 route_id,agency_id,route_short_name,route_long_name, route_type,route_url
 goflux:05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,goflux,"Berlin - Munich","Alexanderplatz 7,10178 Berlin - Marienplatz 8, 80331 Munich",1551,https://goflux.de/?trip=322337
 ```
+</details>
 
-### trips.txt
+
+<details>
+<summary><h3>trips.txt</h3><br>
+</summary>
 
 File: **Required**
 
@@ -96,7 +105,11 @@ route_id,trip_id,service_id,shape_id
 goflux:05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,"EXAMPLE AG","https://www.example.com",Europe/Berlin
 ```
 
-### stop_times.txt
+</details>
+
+<details>
+<summary><h3>stop_times.txt</h3><br>
+</summary>
 
 File: **Required**
 
@@ -118,8 +131,11 @@ Primary key (`trip_id`, `stop_sequence`)
 trip_id,departure_time,arrival_time,stop_id,stop_sequence
 fg:1,15:45:06,15:45:06,de:08436:8049,2
 ```
+</details>
 
-### stops.txt
+<details>
+<summary><h3>stops.txt</h3><br>
+</summary>
 
 File: **Required**
 
@@ -128,7 +144,7 @@ All **Optional** attributes as in [GTFS stops.txt](https://gtfs.org/schedule/ref
 Primary key (`stop_id`)
 
 |  Field Name | Type | Presence | Description |
-|  ------ | ------ | ------ | ------ |
+| :-------------: | :-------------: | :-------------: | :-------------: |
 |  `stop_id` | Unique ID | **Required** | Identifies a location: stop/platform, station, entrance/exit, generic node or boarding area (see `location_type`). <br><br>Multiple routes may use the same `stop_id`. |
 |  `stop_name` | Text | **Required** | Name of the location, e.g. {street}, {house_nr}, {zip}, {city}. |
 |  `stop_lat` | Latitude | **Required** | Latitude of the location. |
@@ -141,29 +157,56 @@ stop_id,stop_lat,stop_lon,stop_name
 mfdz:Ang001,53.11901,14.015776,Mitfahrbank Biesenbrow
 ```
 
-### calendar.txt
+</details>
+
+<details>
+<summary><h3>calendar.txt.txt</h3><br>
+</summary>
 
 File: **Required**
 
-Primary key (`service_id`)
-
 **All** attributes as in [GTFS calendar.txt](https://gtfs.org/schedule/reference/#calendartxt).
 
+Primary key (`service_id`)
+
+| Field Name | Type | Presence | Notwendigkeit |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| `service_id` | Unique ID | **Required** | Identifies a set of dates when service is available for one or more routes. Each service_id value must be unique in a calendar.txt file. |
+| `monday` | ENUM | **Required** |  Indicates whether the service operates on all Mondays in the date range specified by the start_date and end_date fields. Note that exceptions for particular dates may be listed in calendar_dates.txt. Valid options are:<br>1 - Service is available for all Mondays in the date range.<br>0 - Service is not available for Mondays in the date range. |
+| `tuesday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
+| `wednesday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
+| `thursday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
+| `friday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
+| `saturday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
+| `sunday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
+<!--
+| `start_date` | ENUM | **Required** | Start service day for the service interval.  |
+| `end_date` | ENUM | **Required** | End service day for the service interval. This service day is included in the interval. |
+-->
 #### Example: calendar.txt
 
 ```
 service_id,start_date,end_date,monday,tuesday,wednesday,thursday,friday,saturday,sunday
 fg:1,20220223,20220223,0,0,1,0,0,0,0
 ```
+</details>
 
-### shapes.txt
+<details>
+<summary><h3>shapes.txt.txt</h3><br>
+</summary>
 
-| Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
-| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [shape_id](#shape_id) | ID | Foreign ID referencing `trips.trip_id` | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟥 |
-| [shape_pt_lon](#shape_pt_lon) | Latitude | degrees North, in the WGS-84 coordinate system | 9.595989 | 🟥 |
-| [shape_pt_lat](#shape_pt_lat) | Longitude | degrees East, in the WGS-84 coordinate system | 47.753088 | 🟥 |
-| [shape_pt_sequence](#shape_pt_sequence) | Non-negative integer | Sequence in which the shape points connect to form the shape. Values must increase along the trip but do not need to be consecutive. | 1 | 🟥 |
+File: **Required**
+
+All **Optional** attributes as in [GTFS shapes.txt](https://gtfs.org/schedule/reference/#shapestxt).
+
+Primary key (`shape_id`)
+
+| Field Name | Type | Presence | Notwendigkeit |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| `shape_id` | ID | **Required** | Identifies a shape. |
+| `shape_pt_lon` | Latitude | **Required** | Latitude of a shape point. Each record in shapes.txt represents a shape point used to define the shape. |
+| `shape_pt_lat` | Longitude | **Required** | Longitude of a shape point. |
+| `shape_pt_sequence` | Non-negative integer | **Required** | Sequence in which the shape points connect to form the shape. Values must increase along the trip but do not need to be consecutive.Example: If the shape "A_shp" has three points in its definition, the shapes.txt file might contain these records to define the shape: <br> shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence <br> A_shp,37.61956,-122.48161,0 <br> A_shp,37.64430,-122.41070,6 <br> A_shp,37.65863,-122.30839,11 |
 
 #### Example: shapes.txt
 
@@ -172,53 +215,25 @@ shape_id,shape_pt_lon,shape_pt_lat,shape_pt_sequence
 1,9.595989,47.753088,1
 ```
 
-### driver.txt
+</details>
 
-| Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
-| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
-| [profile_picture](#profile_picture) | |  | "https://www.example.com" | 🟦 |
-| [driver_id](#driver_id) | string | Ein String aus UTF-8-Zeichen | 21321asd52a1sd58 | 🟦 |
-| [rating](#rating) | int | {number} 1 low to 5 best | 5 | 🟦 |
+<details>
+<summary><h3>fare_attributes.txt</h3><br>
+</summary>
 
-#### Example: driver.txt
+File: Optional
 
-```
-trip_id,profile_picture,driver_id,rating
-e5cacd3-96de-4c40-9f4f-caf17b85619a,"https://www.example.com",47753088,3,2
-```
+All **Optional** attributes as in [GTFS fare_attributes.txt](https://gtfs.org/schedule/reference/#fare_attributestxt).
 
+Primary key (`trip_id`)
 
-### additional_ridesharing_info.txt
+| Field Name | Type | Presence | Notwendigkeit |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| `trip_id` | Unique ID | Optional | Identifies a trip. |
+| `fare_id` | Unique ID | Optional | Identifies a fare class. |
+| `price` | Non-negative float | Optional | Fare price, in the unit specified by currency_type. |
+| `currency_type` | Currency code | Optional | Currency used to pay the fare.|
 
-| Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
-| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
-| [number_free_seats](#number_free_seats) | int | {number} 0 to 40 best | 2 | 🟦 |
-| [same_gender](#same_gender) | boolean | {Boolean} | true | 🟦 |
-| [luggage_size](#luggage_size) | string | Ein String aus UTF-8-Zeichen small, medium, large | small | 🟦 |
-| [animal_car](#animal_car) | boolean | {Boolean} | false | 🟦 |
-| [car_model](#car_model) | string |Ein String aus UTF-8-Zeichen | Golf | 🟦 |
-| [car_brand](#car_brand) | string |Ein String aus UTF-8-Zeichen | VW | 🟦 |
-| [creation_date](#creation_date) | YYYYMMDD HH:MM:SS | {YYYYMMDD HH:MM:SS} | 20230820 12:10:10 | 🟦 |
-| [smoking](#smoking) | boolean |{Boolean} | false | 🟦 |
-| [payment_method](#payment_method) | string | Ein String aus UTF-8-Zeichen | PayPal | 🟦 |
-
-#### Example: additional_ridesharing_info.txt
-
-```
-trip_id,number_free_seats,same_gender,luggage_size,animal_car,car_model,car_brand,creation_date,smoking,payment_method
-e5cacd3-96de-4c40-9f4f-caf17b85619a,2,false,small,false,Golf,VW,20230820 12:10:10,false,PayPal
-```
-
-### fare_attributes.txt
-
-| Feld | Typ | Beschreibung | Beispiel | Notwendigkeit |
-| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| [trip_id](#trip_id) | string | vgl. [trip_id](#trip_id) | 3e5cacd3-96de-4c40-9f4f-caf17b85619a | 🟦 |
-| [fare_id](#fare_id) | string | Kennzeichnet eine Preisklasse | 54asdasd8asd2asd | 🟦 |
-| [price](#price) | float |Fahrpreis in der in currency_type angegebenen Einheit. Ein Gleitkommawert größer oder gleich 0. Preis für die Gesamtstrecke | 5.60 | 🟦 |
-| [currency_type](#currency_type) | string | Währung, in der der Fahrpreis bezahlt wird. Währungscode https://de.wikipedia.org/wiki/ISO_4217#Active_codes.| EUR | 🟦 |
 
 #### Example: fare_attributes.txt
 
@@ -227,6 +242,65 @@ trip_id,fare_id,price,currency_type
 e5cacd3-96de-4c40-9f4f-caf17b85619a,54asdasd8asd2asd,5.60,EUR
 ```
 
+</details>
+
+<details>
+<summary><h3>driver.txt</h3><br>
+</summary>
+
+File: Optional
+
+Extension of GRFS to the GTFS standard
+
+Primary key (`trip_id`)
+
+| Field Name | Type | Presence | Notwendigkeit |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| `trip_id` | Text | Optional | Identifies a trip. |
+| `profile_picture` | URL | Optional | URL contains the profile picture |
+| `driver_id` | Unique ID | Optional | Identifies a driver. |
+| `rating` | ENUM | Optional | Rating of the driver from 1 to 5. |
+
+
+#### Example: driver.txt
+
+```
+trip_id,profile_picture,driver_id,rating
+e5cacd3-96de-4c40-9f4f-caf17b85619a,"https://www.example.com",47753088,3,2
+```
+</details>
+
+<details>
+<summary><h3>additional_ridesharing_info.txt</h3><br>
+</summary>
+
+File: Optional
+
+Extension of GRFS to the GTFS standard
+
+Primary key (`trip_id`)
+
+| Field Name | Type | Presence | Notwendigkeit |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| `trip_id` | Unique ID | **Required** | Identifies a trip. |
+| `number_free_seats` | ENUM | **Required** |  Number of free seats |
+| `same_gender` | ENUM | Optional | Trip only for same gender:<br>1: Yes<br>2:No |
+| `luggage_size` | ENUM | Optional | Size of the luggage: <br>1: Small<br>2: medium <br>3: large|
+| `animal_car` | ENUM | Optional | Animals in Car allowed:<br>1: Yes<br>2:No |
+| `car_model` | Text | Optional | Car model |
+| `car_brand` | Text | Optional | Car brand |
+| `creation_date` | DATE | **Required** | Date when trip was create - YYYYMMDD HH:MM:SS |
+| `smoking` | ENUM | Optional | Smoking allowed:<br>1: Yes<br>2:No  |
+| `payment_method` | Text | Optional | Method of payment |
+
+
+#### Example: additional_ridesharing_info.txt
+
+```
+trip_id,number_free_seats,same_gender,luggage_size,animal_car,car_model,car_brand,creation_date,smoking,payment_method
+e5cacd3-96de-4c40-9f4f-caf17b85619a,2,false,small,false,Golf,VW,20230820 12:10:10,false,PayPal
+```
+</details>
 <!--
 ## :hammer: inbound rideshareapi
 
