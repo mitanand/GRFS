@@ -1,3 +1,2 @@
 agency_id,agency_name,agency_url,agency_timezone,agency_lang,agency_email
 fg,Fahrgemeinschaft.de,https://www.fahrgemeinschaft.de,Europe/Berlin,de,hilfe@fahrgemeinschaft.de
-goflux,goFLUX,https://goflux.de,Europe/Berlin,de
