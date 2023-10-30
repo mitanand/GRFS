@@ -1,6 +1,6 @@
 route_id,trip_id,service_id,shape_id
-fg:1,fg:1,fg:1,fg:1
-fg:2,fg:2,fg:2,fg:2
-fg:3,fg:3,fg:3,fg:3
-fg:4,fg:4,fg:4,fg:4
-fg:5,fg:5,fg:5,fg:5
+fg:1,fg:1,fg:1,1
+fg:2,fg:2,fg:2,2
+fg:3,fg:3,fg:3,3
+fg:4,fg:4,fg:4,4
+fg:5,fg:5,fg:5,5
