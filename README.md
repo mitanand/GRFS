@@ -233,6 +233,7 @@ Primary key (`trip_id`)
 | `fare_id` | Unique ID | Optional | Identifies a fare class. |
 | `price` | Non-negative float | Optional | Fare price, in the unit specified by currency_type. |
 | `currency_type` | Currency code | Optional | Currency used to pay the fare.|
+| `payment_method` | Enum | Optional | Gibt an, wann der Fahrpreis bezahlt werden muss. Gültige Optionen sind:<br> 0 - Fahrpreis wird an Bord bezahlt.<br> 1 - Der Fahrpreis muss vor dem Einsteigen bezahlt werden. |
 
 
 #### Example: fare_attributes.txt
