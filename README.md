@@ -61,7 +61,7 @@ File: **Required**
 
 All **Optional** attributes as in [GTFS routes.txt](https://gtfs.org/schedule/reference/#routestxt).
 
-Primary key (`route_id`)
+Primary key (`route_id`) - 1:1 Beziehung zwischen route_id und trip_id - Abweichung von GTFS.
 
 |  Field Name | Type | Presence | Description |
 |  ------ | ------ | ------ | ------ |
@@ -89,7 +89,7 @@ File: **Required**
 
 All **Optional** attributes as in [GTFS trips.txt](https://gtfs.org/schedule/reference/#tripstxt).
 
-Primary key (`trip_id`)
+Primary key (`trip_id`) - 1:1 Beziehung zwischen route_id und trip_id - Abweichung von GTFS.
 
 |  Field Name | Type | Presence | Description |
 |  ------ | ------ | ------ | ------ |
