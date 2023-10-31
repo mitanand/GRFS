@@ -192,7 +192,7 @@ fg:1,20220223,20220223,0,0,1,0,0,0,0
 </details>
 
 <details>
-<summary><h3>shapes.txt.txt</h3><br>
+<summary><h3>shapes.txt</h3><br>
 </summary>
 
 File: **Required**
