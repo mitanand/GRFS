@@ -308,7 +308,7 @@ Primary key (`trip_id`)
 | :-------------: | :-------------: | :-------------: | :-------------: |
 | `trip_id` | Unique ID | **Required** | Identifies a trip. |
 | `number_free_seats` | ENUM | **Required** |  Number of free seats |
-| `same_gender` | ENUM | Optional | Trip only for same gender:<br>1: Yes<br>2:No |
+| `same_gender` | ENUM | Optional | Trip only for same gender:<br>1: Yes<br>2: No |
 | `luggage_size` | ENUM | Optional | Size of the luggage: <br>1: Small<br>2: medium <br>3: large|
 | `animal_car` | ENUM | Optional | Animals in Car allowed:<br>1: Yes<br>2:No |
 | `car_model` | Text | Optional | Car model |
