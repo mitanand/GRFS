@@ -261,7 +261,6 @@ Primary key (`trip_id`)
 | `profile_picture` | URL | Optional | URL contains the profile picture |
 | `driver_id` | Unique ID | Optional | Identifies a driver. |
 | `rating` | ENUM | Optional | Rating of the driver from 1 to 5. |
-<!--| `gender` | ENUM | Optional | Gender:<br>1: Female<br>2:Male<br>3:Transgender<br>4:Non-Binary |></>
 
 
 #### Example: driver.txt
