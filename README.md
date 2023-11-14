@@ -179,15 +179,38 @@ Primary key (`service_id`)
 | `friday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
 | `saturday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
 | `sunday` | ENUM | **Required** | Functions in the same way as monday except applies to Tuesdays |
-<!--
 | `start_date` | ENUM | **Required** | Start service day for the service interval.  |
 | `end_date` | ENUM | **Required** | End service day for the service interval. This service day is included in the interval. |
--->
+
 #### Example: calendar.txt
 
 ```
-service_id,start_date,end_date,monday,tuesday,wednesday,thursday,friday,saturday,sunday
-fg:1,20220223,20220223,0,0,1,0,0,0,0
+service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
+fg:1,0,0,1,0,0,0,0,20220223,20220223
+```
+</details>
+
+<details>
+<summary><h3>calendar_dates.txt</h3><br>
+</summary>
+
+File: **Required**
+
+**All** attributes as in [GTFS calendar_dates.txt](https://gtfs.org/schedule/reference/#calendar_datestxt).
+
+Primary key (`service_id`,`date`)
+
+| Field Name | Type | Presence | Notwendigkeit |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| `service_id` | Unique ID | **Required** | Identifies a set of dates when service is available for one or more routes. Each service_id value must be unique in a calendar.txt file. |
+| `date` | Date | **Required** | Date when service exception occurs. |
+| `exception_type` | ENUM | **Required** | Indicates whether service is available on the date specified in the date field. Valid options are:<br>1 - Service has been added for the specified date.<br>2 - Service has been removed for the specified date. |
+
+#### Example: calendar_dates.txt
+
+```
+service_id,date,exception_type
+fg:1,20220223,,
 ```
 </details>
 
