@@ -283,7 +283,7 @@ Primary key (`trip_id`)
 | `trip_id` | Text | Optional | Identifies a trip. |
 | `profile_picture` | URL | Optional | URL contains the profile picture |
 | `driver_id` | Unique ID | Optional | Identifies a driver. |
-| `rating` | ENUM | Optional | Rating of the driver from 1 to 5. |
+| `rating` | ENUM | Optional | Rating of the driver from 1 to 5. <br> 0 no rating yet |
 
 
 #### Example: driver.txt
