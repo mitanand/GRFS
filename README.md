@@ -262,8 +262,8 @@ Primary key (`trip_id`)
 #### Example: fare_attributes.txt
 
 ```
-trip_id,fare_id,price,currency_type
-e5cacd3-96de-4c40-9f4f-caf17b85619a,54asdasd8asd2asd,5.60,EUR
+trip_id,fare_id,price,currency_type,payment_method
+e5cacd3-96de-4c40-9f4f-caf17b85619a,54asdasd8asd2asd,5.60,EUR,0
 ```
 
 </details>
