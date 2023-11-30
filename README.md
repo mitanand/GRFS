@@ -19,7 +19,7 @@ Connecting public transport and ridesharing based on [GTFS](https://gtfs.org).
 - [ ] Vollautomatisierte Systeme direkt über GTFS da Stops vorher definiert sind.
 - [ ] profile_picture -> url
 - [ ] rating muss ein float sein
-- [ ] routes.txt und trips.txt Beziehung 1:1
+- [ ] routes.txt und trips.txt Beziehung 1:n
 - [ ] Shapes.txt welches Koordinatensystem wird verwendet - WGS 84?!
 -->
 <br>
@@ -61,7 +61,7 @@ File: **Required**
 
 All **Optional** attributes as in [GTFS routes.txt](https://gtfs.org/schedule/reference/#routestxt).
 
-Primary key (`route_id`) - 1:1 Beziehung zwischen route_id und trip_id - Abweichung von GTFS.
+Primary key (`route_id`) - 1:n Beziehung zwischen route_id und trip_id - Abweichung von GTFS.
 
 |  Field Name | Type | Presence | Description |
 |  ------ | ------ | ------ | ------ |
@@ -70,13 +70,12 @@ Primary key (`route_id`) - 1:1 Beziehung zwischen route_id und trip_id - Abweich
 |  `route_short_name` | Text | **Required** | Short name of a route departure_{city} -> {arrival_city}, e.g. Berlin - Munich. |
 |  `route_long_name` | Text | **Required** | Full name of a route. This name is generally more descriptive than the `route_short_name` and often includes the route's destination or stop, {departure_address} - {arrival_address}, e.g. Alexanderplatz 7, 10178 Berlin - Marienplatz 8, 80331 Munich |
 |  `route_type` | Enum | **Required** | 1551 | 1551 is the type supported by OpenTripPlanner |
-|  `route_url` | URL | **Required** | URL of a web page about the particular route. Should be different from the `agency.agency_url` value, e.g. https://fahrgemeinschaft.de/?trip=322337 |
 
 #### Example: routes.txt
 
 ```
-route_id,agency_id,route_short_name,route_long_name, route_type,route_url
-goflux:05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,goflux,"Berlin - Munich","Alexanderplatz 7,10178 Berlin - Marienplatz 8, 80331 Munich",1551,https://goflux.de/?trip=322337
+route_id,agency_id,route_short_name,route_long_name, route_type
+goflux:05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,goflux,"Berlin - Munich","Alexanderplatz 7,10178 Berlin - Marienplatz 8, 80331 Munich",1551
 ```
 </details>
 
@@ -89,20 +88,21 @@ File: **Required**
 
 All **Optional** attributes as in [GTFS trips.txt](https://gtfs.org/schedule/reference/#tripstxt).
 
-Primary key (`trip_id`) - 1:1 Beziehung zwischen route_id und trip_id - Abweichung von GTFS.
+Primary key (`trip_id`) - 1:n Beziehung zwischen route_id und trip_id - Abweichung von GTFS.
 
-|  Field Name | Type | Presence | Description |
-|  ------ | ------ | ------ | ------ |
-|  `route_id` | Foreign ID referencing `routes.route_id` | **Required** | Identifies a route. |
-|  `service_id` | Foreign ID referencing `calendar.service_id` or `calendar_dates.service_id` | **Required** | Identifies a set of dates when service is available for one or more routes. |
-|  `trip_id` | Unique ID | **Required** | Identifies a trip. |
-|  `shape_id` | Foreign ID referencing `shapes.shape_id` | **Required** | Identifies a geospatial shape describing the vehicle travel path for a trip. |
-
+| Field Name   | Type                                                                        | Presence     | Description                                                                                                                                        |
+|--------------|-----------------------------------------------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `route_id`   | Foreign ID referencing `routes.route_id`                                    | **Required** | Identifies a route.                                                                                                                                |
+| `service_id` | Foreign ID referencing `calendar.service_id` or `calendar_dates.service_id` | **Required** | Identifies a set of dates when service is available for one or more routes.                                                                        |
+| `trip_id`    | Unique ID                                                                   | **Required** | Identifies a trip.                                                                                                                                 |
+| `shape_id`   | Foreign ID referencing `shapes.shape_id`                                    | **Required** | Identifies a geospatial shape describing the vehicle travel path for a trip.                                                                       |
+| `driver_id`  | Foreign ID referencing `drivers.driver_id`                                  | **Optional** | Identifies a driver.                                                                                                                               |
+| `trip_url`   | URL                                                                         | **Required** | URL of a web page about the particular trip. Should be different from the `agency.agency_url` value, e.g. https://fahrgemeinschaft.de/?trip=322337 |
 #### Example: trips.txt
 
 ```
-route_id,trip_id,service_id,shape_id 
-goflux:05558a29-7a0a-42fa-8162-501e3c7a024a_dfde43ae-7f38-4d6e-9951-bfd622e23c55,"EXAMPLE AG","https://www.example.com",Europe/Berlin
+trip_id,shape_id,route_id,service_id,driver_id 
+ae253a08-5f04-454e-8652-92f7ea550b45,shape:c70a33af-be48-41e8-b81b-777ee61bbf01_27bda21e-55e1-4173-994a-e663a8e6f2c2,c70a33af-be48-41e8-b81b-777ee61bbf01_27bda21e-55e1-4173-994a-e663a8e6f2c2,service:20231205,ab37f804-7fa0-49a0-b813-efbe8eb62e3d
 ```
 
 </details>
@@ -163,7 +163,7 @@ mfdz:Ang001,53.11901,14.015776,Mitfahrbank Biesenbrow
 <summary><h3>calendar.txt</h3><br>
 </summary>
 
-File: **Required**
+File: **Conditionally required**
 
 **All** attributes as in [GTFS calendar.txt](https://gtfs.org/schedule/reference/#calendartxt).
 
@@ -194,7 +194,7 @@ fg:1,0,0,1,0,0,0,0,20220223,20220223
 <summary><h3>calendar_dates.txt</h3><br>
 </summary>
 
-File: **Required**
+File: **Conditionally required**
 
 **All** attributes as in [GTFS calendar_dates.txt](https://gtfs.org/schedule/reference/#calendar_datestxt).
 
@@ -276,14 +276,13 @@ File: Optional
 
 Extension of GRFS to the GTFS standard
 
-Primary key (`trip_id`)
+Primary key (`driver_id`)
 
-| Field Name | Type | Presence | Notwendigkeit |
-| :-------------: | :-------------: | :-------------: | :-------------: |
-| `trip_id` | Text | Optional | Identifies a trip. |
+|    Field Name     | Type | Presence | Notwendigkeit |
+|:-----------------:| :-------------: | :-------------: | :-------------: |
+|    `driver_id`    | Unique ID | Optional | Identifies a driver. |
 | `profile_picture` | URL | Optional | URL contains the profile picture |
-| `driver_id` | Unique ID | Optional | Identifies a driver. |
-| `rating` | ENUM | Optional | Rating of the driver from 1 to 5. <br> 0 no rating yet |
+|     `rating`      | ENUM | Optional | Rating of the driver from 1 to 5. <br> 0 no rating yet |
 
 
 #### Example: driver.txt
