@@ -321,7 +321,7 @@ Primary key (`trip_id`)
 
 ```
 trip_id,number_free_seats,same_gender,luggage_size,animal_car,car_model,car_brand,creation_date,smoking,payment_method
-e5cacd3-96de-4c40-9f4f-caf17b85619a,2,false,small,false,Golf,VW,20230820 12:10:10,false,PayPal
+e5cacd3-96de-4c40-9f4f-caf17b85619a,3,2,2,2,Golf,VW,20230820 12:10:10,2,PayPal
 ```
 </details>
 <!--
