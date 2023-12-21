@@ -289,7 +289,7 @@ Primary key (`driver_id`)
 
 ```
 trip_id,profile_picture,driver_id,rating
-e5cacd3-96de-4c40-9f4f-caf17b85619a,"https://www.example.com",47753088,3,2
+e5cacd3-96de-4c40-9f4f-caf17b85619a,"https://www.example.com",5
 ```
 </details>
 
